@@ -2,7 +2,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useState } from "react";
 import api from "../services/api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; // ⬅️ Importação do Link
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -24,12 +24,11 @@ export default function Login() {
       const response = await api.post('/login', loginData);
       
       if (response.data.token) {
-        // Salva o token no localStorage
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('userEmail', loginData.email);
         
         alert('Login realizado com sucesso!');
-        navigate('/'); // Redireciona para a página inicial
+        navigate('/');
       }
     } catch (error) {
       console.error('Erro no login:', error);
@@ -54,7 +53,6 @@ export default function Login() {
           <h2 className="text-2xl md:text-3xl mb-6 font-semibold">Entre na Onda!</h2>
 
           <form onSubmit={handleLogin}>
-            {/* Email (mudei de "Usuário" para "Email" para bater com a API) */}
             <div className="relative mb-4">
               <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">📧</span>
               <input
@@ -66,7 +64,6 @@ export default function Login() {
               />
             </div>
 
-            {/* Senha */}
             <div className="relative mb-4">
               <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">🔒</span>
 
@@ -86,9 +83,10 @@ export default function Login() {
               </span>
             </div>
 
-            <a href="/RecuperarSenha" className="text-blue-200 text-sm block mb-6 hover:text-blue-300 transition-colors">
+            {/* ✅ Link corrigido */}
+            <Link to="/RecuperarSenha" className="text-blue-200 text-sm block mb-6 hover:text-blue-300 transition-colors">
               Esqueceu a senha?
-            </a>
+            </Link>
 
             <button 
               type="submit" 
@@ -98,12 +96,13 @@ export default function Login() {
               {loading ? 'Entrando...' : 'Entrar'}
             </button>
 
-            <a
-              href="/Cadastro"
+            {/* ✅ Link corrigido */}
+            <Link
+              to="/Cadastro"
               className="block w-full py-3 rounded-full bg-gradient-to-r from-[#E0B3FF] to-[#9A60F3] text-white font-bold hover:from-[#9A60F3] hover:to-[#E0B3FF] transition-all duration-300 shadow-lg hover:shadow-purple-500/25 btn-login"
             >
               Criar Conta
-            </a>
+            </Link>
           </form>
         </div>
       </main>

@@ -18,6 +18,7 @@ import Universitario from "./pages/Universitario";
 import Free from "./pages/Free";
 import Cadastro from "./pages/Cadastro";
 import Login from "./pages/Login";
+import RecuperarSenha from "./pages/RecuperarSenha"; // ✅ Importação adicionada
 
 export default function App() {
   return (
@@ -44,6 +45,7 @@ export default function App() {
         <Route path="/Free" element={<Free />} />
         <Route path="/Cadastro" element={<Cadastro />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/RecuperarSenha" element={<RecuperarSenha />} />
       </Routes>
     </div>
   );

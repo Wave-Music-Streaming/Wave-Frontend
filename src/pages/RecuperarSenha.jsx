@@ -9,7 +9,7 @@ export default function RecuperarSenha() {
       <main className="flex-1 flex justify-center items-center">
         <div className="max-w-[400px] w-full p-10 text-center">
           <img
-            src="/assets/img/logo.png"
+            src="/assets/img/logo2.png"
             className="w-[250px] h-[250px] mx-auto rounded-full mb-6 shadow-xl"
             alt="logo"
           />
